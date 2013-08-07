@@ -1,9 +1,9 @@
 <div class="container">
   
   <h1>Here's your BettURL</h1>
-  <a href="/<%= @url.shortened_url %>">http:localhost/9393/<%= @url.shortened_url %></a>
+  <a href="<%= @url.original_url %>"><%= @url.shortened_url %></a>
   <br>
-  <p>Number of clicks on page: <%= @url.increase_page_count %></p>
+  <p>Number of clicks on page: <%= @url.click_count %></p>
   
 
   <br>

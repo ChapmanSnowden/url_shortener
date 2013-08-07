@@ -7,12 +7,7 @@ get '/' do
 end
 
 post '/urls' do
-  #take a URL from the user
-  #verify that it's a valid URL
-  #shorten it
-
-  # return params[:original_url]
-  @url= Url.create(original_url: params[:original_url])
+  @url= Url.find_or_create(original_url: params[:original_url])
 
   erb :url
 end
