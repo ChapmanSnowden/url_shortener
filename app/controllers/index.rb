@@ -1,5 +1,4 @@
 get '/' do
-  # Look in app/views/index.erb
   erb :index
 end
 
@@ -8,10 +7,19 @@ get '/' do
 end
 
 post '/urls' do
-  # create a new Url
+  #take a URL from the user
+  #verify that it's a valid URL
+  #shorten it
+
+  # return params[:original_url]
+  @url= Url.create(original_url: params[:original_url])
+
+  erb :url
 end
 
 # e.g., /q6bda
-get '/:short_url' do
-  # redirect to appropriate "long" URL
+get '/:shortened_url' do
+  @record = Url.find_by_shortened_url(params[:shortened_url])
+  @record.increase_page_count
+  redirect to @record.original_url
 end
